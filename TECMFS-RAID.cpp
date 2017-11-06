@@ -1,11 +1,12 @@
-
 #include <iostream>
-#include "network_h/NetworkHandler.h"
-
+#include "raid_h/DiskNode.h"
 
 int main() {
 
-	network::Network_Handler n;
+	raid::Disk_Node disk_node( 1024 );
+	disk_node.start();
 
 	return 0;
 }
+
+

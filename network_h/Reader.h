@@ -3,6 +3,7 @@
 #include <SFML/Network.hpp>
 #include <iostream>
 #include <string>
+#include "Compressor.h"
 
 namespace network {
 
@@ -11,6 +12,8 @@ public:
 	Reader();
 	void read( std::string msg );
 	virtual ~Reader();
+private:
+	Compressor m_compressor;
 };
 
 } /* namespace network */

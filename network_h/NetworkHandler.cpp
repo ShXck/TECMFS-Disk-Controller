@@ -16,21 +16,20 @@ void Network_Handler::setup() {
 
 	m_socket.setBlocking( false );
 	m_socket.connect( _address, _port );
-
 }
 
-void Network_Handler::wait_for_response() {
+void Network_Handler::run() {
+
+	std::cout << "Running!" << std::endl;
 
 	sf::Packet _packet;
 	std::string _message;
-	bool received = false;
 
-	while ( !received ) {
+	while ( true ) {
 		if ( m_socket.receive( _packet ) == sf::Socket::Done ) {
 			if( _packet >> _message ) {
 				m_reader.read( _message );
 				m_container.last_msg = _message;
-				received = true;
 			}
 		}
 	}

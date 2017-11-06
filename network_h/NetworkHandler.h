@@ -17,7 +17,7 @@ class Network_Handler {
 public:
 	Network_Handler();
 	void send( std::string msg );
-	void wait_for_response();
+	void run();
 	Data_Container& data_container();
 	virtual ~Network_Handler();
 private:
