@@ -20,6 +20,7 @@ public:
 	void set_blocks_size( unsigned int b_size );
 	const u_int& block_size() const;
 	const u_int& node_size() const;
+	const u_int& blocks() const;
 	virtual ~TECMFS_Disk();
 private:
 	u_int b_size;

@@ -5,11 +5,13 @@
 #include <SFML/Network.hpp>
 #include "Reader.h"
 #include "XMLHandler.h"
+#include "ProcessedTmp.h"
+#include "../raid_h/DiskNode.h"
 
 namespace network {
 
 struct Data_Container {
-	std::string last_msg;
+	Processed_Tmp last_request_result;
 	std::string container_folder;
 };
 
@@ -23,6 +25,7 @@ public:
 private:
 	void setup();
 private:
+	raid::Disk_Node m_node;
 	sf::TcpSocket m_socket;
 	Reader m_reader;
 	Data_Container m_container;

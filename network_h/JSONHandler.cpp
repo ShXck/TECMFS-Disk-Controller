@@ -2,8 +2,32 @@
 
 namespace JHandler {
 
+	str build_store_ret_msg( std::vector<str> blocks_used, int instruction ) {
+
+		JDocument _doc;
+		_doc.SetObject();
+		Alloc _alloc = _doc.GetAllocator();
+		rapidjson::Value _array( rapidjson::kArrayType );
+
+		for( unsigned int i = 0; i < blocks_used.size(); i++ ) {
+			rapidjson::Value str_val;
+			str_val.SetString( blocks_used[i].c_str(), _alloc );
+			_array.PushBack( str_val, _alloc );
+		}
+
+		_doc.AddMember( "blocks", _array, _alloc );
+		_doc.AddMember( "instruction", instruction, _alloc );
+
+		rapidjson::StringBuffer str_buffer;
+		Writer _writer( str_buffer );
+		_doc.Accept( _writer );
+
+		return str_buffer.GetString();
+	}
+
 	rapidjson::Value& get_value( c_char json, c_char json_key ) {
-		rapidjson::Document _doc;
+
+		JDocument _doc;
 		_doc.Parse( json );
 
 		Alloc _alloc = _doc.GetAllocator();

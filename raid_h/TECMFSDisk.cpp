@@ -37,6 +37,10 @@ const u_int& TECMFS_Disk::node_size() const {
 	return n_size;
 }
 
+const u_int& TECMFS_Disk::blocks() const {
+	return block_number;
+}
+
 TECMFS_Disk::~TECMFS_Disk() { }
 
 } /* namespace raid */

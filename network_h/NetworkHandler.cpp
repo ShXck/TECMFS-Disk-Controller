@@ -28,8 +28,9 @@ void Network_Handler::run() {
 	while ( true ) {
 		if ( m_socket.receive( _packet ) == sf::Socket::Done ) {
 			if( _packet >> _message ) {
-				m_reader.read( _message );
-				m_container.last_msg = _message;
+				Processed_Tmp tmp_obj = m_reader.read( _message );
+				m_node.execute( tmp_obj );
+				m_container.last_request_result = tmp_obj;
 			}
 		}
 	}
