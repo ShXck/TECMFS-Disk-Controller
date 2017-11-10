@@ -6,10 +6,7 @@
 #include "Compressor.h"
 #include "JSONHandler.h"
 #include "ProcessedTmp.h"
-
-#define STORE_INSTR 1
-#define RETRV_INSTR 2
-#define NON_INSTR 3
+#include "Instructions.h"
 
 namespace network {
 
