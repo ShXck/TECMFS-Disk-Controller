@@ -23,15 +23,12 @@ void Network_Handler::run() {
 	std::cout << "Running!" << std::endl;
 
 	sf::Packet _packet;
-	std::string _message;
 
 	while ( true ) {
 		if ( m_socket.receive( _packet ) == sf::Socket::Done ) {
-			if( _packet >> _message ) {
-				Processed_Tmp tmp_obj = m_reader.read( _message );
-				m_node.execute( tmp_obj );
-				m_container.last_request_result = tmp_obj;
-			}
+			Processed_Tmp tmp_obj = m_reader.read( _packet );
+			m_node.execute( tmp_obj, &m_socket );
+			m_container.last_request_result = tmp_obj;
 		}
 	}
 }

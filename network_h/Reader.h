@@ -13,7 +13,7 @@ namespace network {
 class Reader {
 public:
 	Reader();
-	Processed_Tmp read( std::string msg );
+	Processed_Tmp read( sf::Packet packet );
 	virtual ~Reader();
 private:
 	Compressor m_compressor;

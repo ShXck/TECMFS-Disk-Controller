@@ -16,6 +16,9 @@ typedef std::string str;
 namespace JHandler {
 
 	str build_store_ret_msg( std::vector<str> blocks_used, int instruction );
+	str build_retrv_msg( std::string video_id, int order, int mat, int instruction );
+	str build_instruction_msg( int instr );
+	str build_empty();
 	rapidjson::Value& get_value( c_char json, c_char json_key );
 
 } /* namespace JHandler */
