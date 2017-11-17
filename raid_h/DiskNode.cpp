@@ -34,7 +34,7 @@ void Disk_Node::execute( network::Processed_Tmp tmp, sf::TcpSocket* socket ) {
 			std::sort( chunk_container.begin(), chunk_container.end() );
 
 			for( auto& vc : chunk_container ) {
-				std::string og_bytes;
+				/*std::string og_bytes;
 				std::vector<std::string> sub_bins;
 				std::string curr_bin = vc.video_binary_data;
 				for( int i = 0; i < curr_bin.length() / 8; i++ ) {
@@ -43,14 +43,15 @@ void Disk_Node::execute( network::Processed_Tmp tmp, sf::TcpSocket* socket ) {
 				}
 				for( unsigned int j = 0; j < sub_bins.size(); j++ ) {
 					og_bytes += bit_to_byte( sub_bins[j] );
-				}
+				}*/
 
 				std::string ret_msg = JHandler::build_retrv_msg( tmp.video_id, vc.chunk_order, vc.mat_number , (int)Instruction::RETRV_INSTR );
 				sf::Packet _packet;
-				_packet << og_bytes << ret_msg;
+				_packet << vc.tmp_bytes << ret_msg;
 				socket->send( _packet );
 			}
-			send_ready_msg( socket );
+			send_ready_msg( socket );  //TODO: ENVIAR HASTA QUE SE ENVIEN TODOS LOS MATS
+			std::this_thread::sleep_for( std::chrono::milliseconds( 250 ) );
 		}
 	}
 }
@@ -70,7 +71,7 @@ void Disk_Node::distribute_data( std::string bytes, std::string vid_id, int chun
 
 	std::string _binary = binary( bytes );
 
-	m_blocks[disk_block].insert_video_data( _binary, vid_id, chunk_order, mat );
+	m_blocks[disk_block].insert_video_data( bytes, _binary, vid_id, chunk_order, mat );
 }
 
 std::string Disk_Node::byte_to_binary( byte source ) {

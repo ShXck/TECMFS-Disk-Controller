@@ -12,6 +12,7 @@
 #include <SFML/Network.hpp>
 #include "../network_h/JSONHandler.h"
 #include "../network_h/Instructions.h"
+#include <thread>
 
 #define DISK_CAPACITY 1280
 

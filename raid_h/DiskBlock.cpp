@@ -8,9 +8,9 @@ void Disk_Block::set_id( std::string id ) {
 	block_id = id;
 }
 
-void Disk_Block::insert_video_data( std::string binary, std::string vid_id, int chunk_order, int mat ) {
+void Disk_Block::insert_video_data( std::string bytes, std::string binary, std::string vid_id, int chunk_order, int mat ) {
 	//TODO: Verify the size of the data before inserting it.
-	m_collection.push_back( Video_Container( binary, vid_id, chunk_order, mat ) );
+	m_collection.push_back( Video_Container( bytes, binary, vid_id, chunk_order, mat ) );
 }
 
 Video_Collection Disk_Block::group_by_mat_number( std::string vid_id, int mat ) {
