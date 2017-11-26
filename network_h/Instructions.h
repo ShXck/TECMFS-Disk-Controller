@@ -5,7 +5,8 @@ enum class Instruction {
 	STORE_INSTR = 1,
 	COLLECT_INSTR = 2,
 	RETRV_INSTR = 3,
-	JOIN_INSTR = 4
+	JOIN_INSTR = 4,
+	SAVE_PARITY = 5
 };
 
 
