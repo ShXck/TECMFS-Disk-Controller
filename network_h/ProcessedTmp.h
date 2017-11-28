@@ -10,7 +10,14 @@ public:
 	Processed_Tmp( int instr, int mat, std::string vid_id );
 	Processed_Tmp();
 	Processed_Tmp& operator=( const Processed_Tmp& prc_tmp );
+	/**
+	 * Asigna el orden a un frame,
+	 * @param order
+	 */
 	void set_mat_order( int order );
+	/**
+	 * @return Un objeto vacío.
+	 */
 	static Processed_Tmp mock();
 	virtual ~Processed_Tmp();
 public:

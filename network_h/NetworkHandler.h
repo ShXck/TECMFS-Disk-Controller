@@ -18,11 +18,24 @@ struct Data_Container {
 class Network_Handler {
 public:
 	Network_Handler();
+	/**
+	 * Envía un mensaje al server.
+	 * @param msg el mensaje.
+	 */
 	void send( std::string msg );
+	/**
+	 * Inicia la ejecución del handler.
+	 */
 	void run();
+	/**
+	 * @return El contenedor con los datos de la respuesta del servidor.
+	 */
 	Data_Container& data_container();
 	virtual ~Network_Handler();
 private:
+	/**
+	 * Lee la configuración de un archivo XML.
+	 */
 	void setup();
 private:
 	raid::Disk_Node m_node;

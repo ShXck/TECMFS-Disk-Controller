@@ -14,6 +14,11 @@ namespace network {
 class Reader {
 public:
 	Reader();
+	/**
+	 * Lee los datos provenientes del controller.
+	 * @param packet el packet entrante.
+	 * @return un objeto con los datos recibidos.
+	 */
 	Processed_Tmp read( sf::Packet packet );
 	virtual ~Reader();
 private:
